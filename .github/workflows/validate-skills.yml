@@ -1,0 +1,102 @@
+name: Validate Skill Packages
+
+on:
+  pull_request:
+    paths:
+      - 'skills/**'
+      - '.github/workflows/validate-skills.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'skills/**'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install PyYAML
+        run: pip install --no-input pyyaml==6.0.2
+      - name: Validate SKILL.md frontmatter
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import os, re, sys, yaml
+
+          ROOT = 'skills'
+          REQUIRED = ['name', 'description']
+          PI_TOOLS = {'bash', 'edit', 'find', 'grep', 'ls', 'read', 'write'}
+          OHMAGENT_TOOLS = {'web_extract', 'web_search'}
+          errors = []
+          checked = 0
+
+          for folder, _, files in os.walk(ROOT):
+              for fname in files:
+                  if fname != 'SKILL.md':
+                      continue
+                  path = os.path.join(folder, fname)
+                  checked += 1
+                  with open(path, encoding='utf-8') as fh:
+                      text = fh.read()
+
+                  m = re.match(r'^---\n(.*?)\n---\n', text, re.DOTALL)
+                  if not m:
+                      errors.append(f'{path}: missing YAML frontmatter delimiters')
+                      continue
+                  try:
+                      fm = yaml.safe_load(m.group(1)) or {}
+                  except yaml.YAMLError as e:
+                      errors.append(f'{path}: invalid YAML — {e}')
+                      continue
+
+                  if not isinstance(fm, dict):
+                      errors.append(f'{path}: frontmatter is not a mapping')
+                      continue
+
+                  for key in REQUIRED:
+                      if not fm.get(key):
+                          errors.append(f'{path}: missing required field {key!r}')
+
+                  folder_name = os.path.basename(folder)
+                  if fm.get('name') and fm['name'] != folder_name:
+                      errors.append(
+                          f'{path}: name {fm["name"]!r} does not match folder {folder_name!r}'
+                      )
+
+                  meta = (fm.get('metadata') or {}).get('ohmyagent') or {}
+                  compat = meta.get('compatibility')
+                  if compat != 'pi':
+                      errors.append(
+                          f'{path}: metadata.ohmyagent.compatibility must be "pi", got {compat!r}'
+                      )
+
+                  tools = meta.get('tools') or {}
+                  builtin = tools.get('builtin') or []
+                  custom = tools.get('custom') or []
+                  unknown_builtin = [t for t in builtin if t not in PI_TOOLS]
+                  unknown_custom = [t for t in custom if t not in OHMAGENT_TOOLS]
+                  if unknown_builtin:
+                      errors.append(
+                          f'{path}: unknown Pi builtin tool(s): {unknown_builtin}. '
+                          f'Allowed: {sorted(PI_TOOLS)}'
+                      )
+                  if unknown_custom:
+                      errors.append(
+                          f'{path}: unknown OhMyAgent custom tool(s): {unknown_custom}. '
+                          f'Allowed: {sorted(OHMAGENT_TOOLS)}'
+                      )
+
+          print(f'Checked {checked} SKILL.md file(s).')
+          if errors:
+              print('\nValidation errors:', file=sys.stderr)
+              for e in errors:
+                  print(f'  - {e}', file=sys.stderr)
+              sys.exit(1)
+          print('All skill packages valid.')
+          PY
