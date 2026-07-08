@@ -4,6 +4,8 @@ This repository is the official OhMyAgent skills hub. It contains curated
 `SKILL.md` packages that are reviewed for the OhMyAgent web app and the real Pi
 coding-agent runtime.
 
+Read `docs/github-workflow.md` before opening PRs.
+
 ## Mission
 
 Only add skills that are safe and useful inside OhMyAgent. Many community skills

@@ -1,0 +1,40 @@
+name: Feature Request
+description: Suggest a new skill, feature, or workflow improvement
+title: "[feat] "
+labels: ["enhancement", "status:triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you trying to solve?
+      description: Describe the pain or unmet need before proposing a solution.
+      placeholder: "I keep hitting ... and it slows me down because ..."
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: What would help?
+      description: Sketch the solution, including alternatives you considered.
+    validations:
+      required: true
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Rough scope
+      options:
+        - Small (one file / one function)
+        - Medium (one module or one skill)
+        - Large (multiple modules or new behavior)
+    validations:
+      required: false
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: List what must be true before this issue can be closed.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: false

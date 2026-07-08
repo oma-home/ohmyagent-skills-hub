@@ -9,6 +9,11 @@ frontmatter may contain tool declarations or runtime assumptions that OhMyAgent
 does not support. Skills in this hub should be reviewed and adapted before they
 are marked as official.
 
+## Collaboration
+
+Read [`docs/github-workflow.md`](docs/github-workflow.md) before opening issues
+or pull requests.
+
 ## Directory Layout
 
 Each skill lives in its own directory:
