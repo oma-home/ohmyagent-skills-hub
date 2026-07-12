@@ -1,30 +1,27 @@
 ---
 name: docx
-description: "Use this skill when the user wants to create, read, edit, or manipulate Word documents (.docx files), including professional document generation, tracked changes, comments, images, formatting, or conversion workflows."
+description: Use this skill when the user wants to create, read, edit, or manipulate Word documents (.docx files), including professional document generation, tracked changes, comments, images, formatting, or conversion workflows.
 metadata:
   source:
     repository: anthropics/skills
     path: skills/docx
     url: https://github.com/anthropics/skills/tree/main/skills/docx
-    license: "Anthropic proprietary license; internal hub use only. See LICENSE.txt."
+    license: Anthropic proprietary license; internal hub use only. See LICENSE.txt.
   ohmyagent:
-    compatibility: pi
     level: official
     tools:
-      builtin:
-        - read
-        - write
-        - edit
-        - bash
-        - find
-        - grep
-        - ls
-      custom: []
-    notes: "Internal OhMyAgent/Pi adaptation of anthropics/skills docx. Uses local scripts and document-processing CLIs. Prefer uv for Python dependencies and local project or npx execution for Node helpers; do not require global pip installs."
+    - read
+    - write
+    - edit
+    - bash
+    - find
+    - grep
+    - ls
+    notes: Internal OhMyAgent adaptation of anthropics/skills docx. Uses local scripts and document-processing CLIs. Prefer uv for Python dependencies and local project or npx execution for Node helpers; do not require global pip installs.
 ---
 # DOCX creation, editing, and analysis
 
-> OhMyAgent adaptation: sourced from [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/docx) and reviewed for Pi-compatible metadata. Runtime assumptions are limited to the supported OhMyAgent/Pi tools declared in frontmatter. Internal OhMyAgent/Pi adaptation of anthropics/skills docx. Uses local scripts and document-processing CLIs. Prefer uv for Python dependencies and local project or npx execution for Node helpers; do not require global pip installs.
+> OhMyAgent adaptation: sourced from [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/docx) and reviewed for OhMyAgent. Internal OhMyAgent adaptation of anthropics/skills docx. Uses local scripts and document-processing CLIs. Prefer uv for Python dependencies and local project or npx execution for Node helpers; do not require global pip installs.
 
 ## Overview
 

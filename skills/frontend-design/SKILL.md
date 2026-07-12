@@ -1,23 +1,20 @@
 ---
 name: frontend-design
-description: "Use this skill for distinctive, intentional frontend visual design when building new UI or reshaping an existing interface, especially to avoid generic templated layouts."
+description: Use this skill for distinctive, intentional frontend visual design when building new UI or reshaping an existing interface, especially to avoid generic templated layouts.
 metadata:
   source:
     repository: anthropics/skills
     path: skills/frontend-design
     url: https://github.com/anthropics/skills/tree/main/skills/frontend-design
-    license: "Apache-2.0. See LICENSE.txt."
+    license: Apache-2.0. See LICENSE.txt.
   ohmyagent:
-    compatibility: pi
     level: official
-    tools:
-      builtin: []
-      custom: []
-    notes: "Prompt-only OhMyAgent/Pi adaptation of anthropics/skills frontend-design. When used inside OhMyAgent app work, follow the local mini-lit UI conventions and app-specific UI rules."
+    tools: []
+    notes: Prompt-only OhMyAgent adaptation of anthropics/skills frontend-design. When used inside OhMyAgent app work, follow the local mini-lit UI conventions and app-specific UI rules.
 ---
 # Frontend Design
 
-> OhMyAgent adaptation: sourced from [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/frontend-design) and reviewed for Pi-compatible metadata. Runtime assumptions are limited to the supported OhMyAgent/Pi tools declared in frontmatter. Prompt-only OhMyAgent/Pi adaptation of anthropics/skills frontend-design. When used inside OhMyAgent app work, follow the local mini-lit UI conventions and app-specific UI rules.
+> OhMyAgent adaptation: sourced from [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/frontend-design) and reviewed for OhMyAgent. Prompt-only OhMyAgent adaptation of anthropics/skills frontend-design. When used inside OhMyAgent app work, follow the local mini-lit UI conventions and app-specific UI rules.
 
 Approach this as the design lead at a small studio known for giving every client a visual identity that could not be mistaken for anyone else's. This client has already rejected proposals that felt templated, and is paying for a distinctive point of view: make deliberate, opinionated choices about palette, typography, and layout that are specific to this brief, and take one real aesthetic risk you can justify.
 

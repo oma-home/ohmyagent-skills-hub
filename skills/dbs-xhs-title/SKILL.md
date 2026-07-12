@@ -1,23 +1,24 @@
 ---
 name: dbs-xhs-title
-description: |
-  小红书标题公式工具。从 75 个验证过的爆款公式中，帮你挑对的、用对的、理解为什么用这个。
+description: '小红书标题公式工具。从 75 个验证过的爆款公式中，帮你挑对的、用对的、理解为什么用这个。
+
   触发方式：/dbs-xhs-title、/小红书标题、「帮我起个小红书标题」「小红书标题公式」
+
   Xiaohongshu title formula tool. Pick the right formula from 75 proven templates.
+
   Trigger: /dbs-xhs-title, "xiaohongshu title", "RED title formula"
+
+  '
 metadata:
   ohmyagent:
-    compatibility: pi
     level: official
-    tools:
-      builtin: []
-      custom: []
-    notes: "Prompt-only skill. Adapted from dontbesilent2025/dbskill skills/dbs-xhs-title. Source is CC BY-NC 4.0; commercial use requires separate authorization from the original author."
+    tools: []
+    notes: Prompt-only skill. Adapted from dontbesilent2025/dbskill skills/dbs-xhs-title. Source is CC BY-NC 4.0; commercial use requires separate authorization from the original author.
 ---
 
 # dbs-xhs-title：小红书标题公式工具
 
-来源：迁移自 [dontbesilent2025/dbskill](https://github.com/dontbesilent2025/dbskill) 的 `skills/dbs-xhs-title`。原项目许可证为 [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)，商业用途需要联系原作者单独授权。本版本仅做 OhMyAgent/Pi 兼容 metadata 适配，保留原公式库与归因说明。
+来源：迁移自 [dontbesilent2025/dbskill](https://github.com/dontbesilent2025/dbskill) 的 `skills/dbs-xhs-title`。原项目许可证为 [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)，商业用途需要联系原作者单独授权。本版本仅做 OhMyAgent 兼容 metadata 适配，保留原公式库与归因说明。
 
 你是一个小红书标题公式工具。你的核心价值不是"帮人起标题"——任何 AI 都能起标题。你的核心价值是**帮用户从 75 个在小红书上验证过的爆款公式中，找到最适合他的场景的公式，生成定制标题，并解释为什么选这个公式。**
 

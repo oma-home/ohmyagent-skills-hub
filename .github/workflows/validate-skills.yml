@@ -31,8 +31,10 @@ jobs:
 
           ROOT = 'skills'
           REQUIRED = ['name', 'description']
-          PI_TOOLS = {'bash', 'edit', 'find', 'grep', 'ls', 'read', 'write'}
-          OHMAGENT_TOOLS = {'web_extract', 'web_search'}
+          ALLOWED_TOOLS = {
+              'bash', 'edit', 'find', 'grep', 'ls', 'read', 'write',
+              'web_extract', 'web_search', 'subagent',
+          }
           errors = []
           checked = 0
 
@@ -70,26 +72,17 @@ jobs:
                       )
 
                   meta = (fm.get('metadata') or {}).get('ohmyagent') or {}
-                  compat = meta.get('compatibility')
-                  if compat != 'pi':
+                  tools = meta.get('tools') or []
+                  if not isinstance(tools, list):
                       errors.append(
-                          f'{path}: metadata.ohmyagent.compatibility must be "pi", got {compat!r}'
+                          f'{path}: metadata.ohmyagent.tools must be a list, got {type(tools).__name__}'
                       )
-
-                  tools = meta.get('tools') or {}
-                  builtin = tools.get('builtin') or []
-                  custom = tools.get('custom') or []
-                  unknown_builtin = [t for t in builtin if t not in PI_TOOLS]
-                  unknown_custom = [t for t in custom if t not in OHMAGENT_TOOLS]
-                  if unknown_builtin:
+                      continue
+                  unknown_tools = [t for t in tools if t not in ALLOWED_TOOLS]
+                  if unknown_tools:
                       errors.append(
-                          f'{path}: unknown Pi builtin tool(s): {unknown_builtin}. '
-                          f'Allowed: {sorted(PI_TOOLS)}'
-                      )
-                  if unknown_custom:
-                      errors.append(
-                          f'{path}: unknown OhMyAgent custom tool(s): {unknown_custom}. '
-                          f'Allowed: {sorted(OHMAGENT_TOOLS)}'
+                          f'{path}: unknown OhMyAgent tool(s): {unknown_tools}. '
+                          f'Allowed: {sorted(ALLOWED_TOOLS)}'
                       )
 
           print(f'Checked {checked} SKILL.md file(s).')

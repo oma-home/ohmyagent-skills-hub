@@ -1,8 +1,7 @@
 # Agent Instructions
 
 This repository is the official OhMyAgent skills hub. It contains curated
-`SKILL.md` packages that are reviewed for the OhMyAgent web app and the real Pi
-coding-agent runtime.
+`SKILL.md` packages that are reviewed for the OhMyAgent web app and runtime.
 
 Read `docs/github-workflow.md` before opening PRs.
 
@@ -10,8 +9,7 @@ Read `docs/github-workflow.md` before opening PRs.
 
 Only add skills that are safe and useful inside OhMyAgent. Many community skills
 target Claude Code, Codex, Cursor, or other agents directly. Do not copy those
-skills blindly. Adapt them so their runtime assumptions match Pi and
-OhMyAgent, then preserve attribution and source links.
+skills blindly. Adapt them so their runtime assumptions match OhMyAgent, then preserve attribution and source links.
 
 ## First Steps For Coding Agents
 
@@ -48,12 +46,22 @@ Only `SKILL.md` is required. Keep supporting files beside it and reference them
 with relative paths from `SKILL.md`.
 
 Do not place skills at the repository root. Do not use `.claude/skills`,
-`.agents/skills`, `.pi/skills`, or other agent-specific install directories in
-this repo.
+`.agents/skills`, or other agent-specific install directories in this repo.
 
 ## SKILL.md Frontmatter
 
-Every skill must include standard fields:
+Every skill must include only the standard fields by default:
+
+```yaml
+---
+name: example-skill
+description: A concise description of when the skill should be used.
+---
+```
+
+Add optional OhMyAgent metadata only when it carries useful review information,
+such as source attribution, official level, tool expectations, or adaptation
+notes:
 
 ```yaml
 ---
@@ -61,11 +69,8 @@ name: example-skill
 description: A concise description of when the skill should be used.
 metadata:
   ohmyagent:
-    compatibility: pi
     level: official
-    tools:
-      builtin: []
-      custom: []
+    tools: []
     notes: ""
 ---
 ```
@@ -74,10 +79,9 @@ Rules:
 
 - `name` must match the folder name unless there is a strong migration reason.
 - `description` must explain when an agent should use the skill.
-- `metadata.ohmyagent.compatibility` must be `pi` after review.
-- `metadata.ohmyagent.level` should be `official` only after adaptation.
-- `metadata.ohmyagent.tools.builtin` lists Pi built-in tools the skill expects.
-- `metadata.ohmyagent.tools.custom` lists OhMyAgent custom tools the skill
+- If present, `metadata.ohmyagent.level` should be `official` only after
+  adaptation.
+- If present, `metadata.ohmyagent.tools` lists the OhMyAgent tools the skill
   expects.
 - Preserve useful source metadata, but do not rely on runtime-specific fields
   from other agents.
@@ -86,8 +90,6 @@ Rules:
 
 OhMyAgent currently recognizes these runtime tools:
 
-Pi built-in tools:
-
 - `bash`
 - `edit`
 - `find`
@@ -95,19 +97,23 @@ Pi built-in tools:
 - `ls`
 - `read`
 - `write`
-
-OhMyAgent custom tools:
-
 - `web_extract`: extract a URL as markdown/text, using Jina Reader and direct
   fetch fallbacks.
 - `web_search`: web search with provider fallback and source remarks for cost
   tracking.
+- `subagent`: run focused helper agents for parallel source inspection,
+  independent review, and scoped validation tasks.
 
 Do not declare unsupported tool requirements such as Claude Code's
 `AskUserQuestion`, `WebFetch`, `TodoWrite`, or other agent-specific tool names.
 If the source skill depends on such a tool, rewrite the instructions into a
-prompt-only workflow or map it to a supported Pi/OhMyAgent tool. Document any
+prompt-only workflow or map it to a supported OhMyAgent tool. Document any
 remaining limitation in `metadata.ohmyagent.notes`.
+
+If a source skill uses subagents, agent workers, or parallel reviewers, adapt
+that behavior to OhMyAgent's `subagent` tool. Do not copy
+Claude/Codex-specific subagent prompts, role names, protocols, or benchmark
+harnesses as required behavior.
 
 ## Migration Checklist
 
@@ -117,7 +123,7 @@ When porting a community skill:
 2. Check license and attribution requirements.
 3. Read all referenced files, scripts, and assets.
 4. Remove or adapt unsupported frontmatter fields.
-5. Replace unsupported tool assumptions with Pi/OhMyAgent-compatible behavior.
+5. Replace unsupported tool assumptions with OhMyAgent-compatible behavior.
 6. Keep the skill focused. Do not import unrelated skills from the same source
    repository.
 7. Add `metadata.ohmyagent` and note whether the skill is prompt-only or uses
@@ -173,7 +179,6 @@ find skills -name SKILL.md -print
 For each changed skill:
 
 - Confirm `SKILL.md` has `name` and `description`.
-- Confirm `metadata.ohmyagent.compatibility: pi` is present.
 - Confirm no unsupported tool is declared as required.
 - Confirm referenced files exist.
 

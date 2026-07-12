@@ -1,34 +1,31 @@
 ---
 name: pdf
-description: "Use this skill when the user wants to read, create, edit, split, merge, rotate, watermark, OCR, encrypt/decrypt, extract from, or fill PDF files."
+description: Use this skill when the user wants to read, create, edit, split, merge, rotate, watermark, OCR, encrypt/decrypt, extract from, or fill PDF files.
 metadata:
   source:
     repository: anthropics/skills
     path: skills/pdf
     url: https://github.com/anthropics/skills/tree/main/skills/pdf
-    license: "Anthropic proprietary license; internal hub use only. See LICENSE.txt."
+    license: Anthropic proprietary license; internal hub use only. See LICENSE.txt.
   ohmyagent:
-    compatibility: pi
     level: official
     tools:
-      builtin:
-        - read
-        - write
-        - edit
-        - bash
-        - find
-        - grep
-        - ls
-      custom: []
-    notes: "Internal OhMyAgent/Pi adaptation of anthropics/skills pdf. Uses local scripts and PDF-processing CLIs. Prefer uv for Python dependencies; do not require global pip installs."
+    - read
+    - write
+    - edit
+    - bash
+    - find
+    - grep
+    - ls
+    notes: Internal OhMyAgent adaptation of anthropics/skills pdf. Uses local scripts and PDF-processing CLIs. Prefer uv for Python dependencies; do not require global pip installs.
 ---
 # PDF Processing Guide
 
-> OhMyAgent adaptation: sourced from [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/pdf) and reviewed for Pi-compatible metadata. Runtime assumptions are limited to the supported OhMyAgent/Pi tools declared in frontmatter. Internal OhMyAgent/Pi adaptation of anthropics/skills pdf. Uses local scripts and PDF-processing CLIs. Prefer uv for Python dependencies; do not require global pip installs.
+> OhMyAgent adaptation: sourced from [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/pdf) and reviewed for OhMyAgent. Internal OhMyAgent adaptation of anthropics/skills pdf. Uses local scripts and PDF-processing CLIs. Prefer uv for Python dependencies; do not require global pip installs.
 
 ## Overview
 
-This guide covers essential PDF processing operations using Python libraries and command-line tools. In OhMyAgent/Pi, run Python examples with `uv run --with <package> python <script>` or a local `uv` environment; do not install dependencies globally with `pip`. For advanced features, JavaScript libraries, and detailed examples, see reference.md. If you need to fill out a PDF form, read forms.md and follow its instructions.
+This guide covers essential PDF processing operations using Python libraries and command-line tools. In OhMyAgent, run Python examples with `uv run --with <package> python <script>` or a local `uv` environment; do not install dependencies globally with `pip`. For advanced features, JavaScript libraries, and detailed examples, see reference.md. If you need to fill out a PDF form, read forms.md and follow its instructions.
 
 ## Quick Start
 
