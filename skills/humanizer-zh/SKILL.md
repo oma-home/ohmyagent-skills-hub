@@ -3,11 +3,8 @@ name: humanizer-zh
 description: 编辑中文文本，减少机械的 AI 写作痕迹，让表达更自然、直接、有具体细节。
 metadata:
   ohmyagent:
-    compatibility: pi
     level: official
-    tools:
-      builtin: []
-      custom: []
+    tools: []
     notes: Prompt-only skill. Use references/checklist.md for the review checklist.
 ---
 

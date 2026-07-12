@@ -1,28 +1,25 @@
 ---
 name: algorithmic-art
-description: "Use this skill to create original algorithmic or generative art with p5.js, seeded randomness, interactive parameter exploration, flow fields, particles, or computational aesthetics."
+description: Use this skill to create original algorithmic or generative art with p5.js, seeded randomness, interactive parameter exploration, flow fields, particles, or computational aesthetics.
 metadata:
   source:
     repository: anthropics/skills
     path: skills/algorithmic-art
     url: https://github.com/anthropics/skills/tree/main/skills/algorithmic-art
-    license: "Apache-2.0. See LICENSE.txt."
+    license: Apache-2.0. See LICENSE.txt.
   ohmyagent:
-    compatibility: pi
     level: official
     tools:
-      builtin:
-        - read
-        - write
-        - edit
-        - bash
-        - find
-        - grep
-        - ls
-      custom: []
-    notes: "Adapted from anthropics/skills algorithmic-art for OhMyAgent/Pi. Produces normal browser-ready HTML/JS artifacts rather than Claude-specific artifacts."
+    - read
+    - write
+    - edit
+    - bash
+    - find
+    - grep
+    - ls
+    notes: Adapted from anthropics/skills algorithmic-art for OhMyAgent. Produces normal browser-ready HTML/JS artifacts rather than Claude-specific artifacts.
 ---
-> OhMyAgent adaptation: sourced from [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/algorithmic-art) and reviewed for Pi-compatible metadata. Runtime assumptions are limited to the supported OhMyAgent/Pi tools declared in frontmatter.
+> OhMyAgent adaptation: sourced from [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/algorithmic-art) and reviewed for OhMyAgent. Runtime assumptions are limited to the supported OhMyAgent tools declared in frontmatter.
 
 Algorithmic philosophies are computational aesthetic movements that are then expressed through code. Output .md files (philosophy), .html files (interactive viewer), and .js files (generative algorithms).
 

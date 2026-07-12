@@ -1,30 +1,27 @@
 ---
 name: xlsx
-description: "Use this skill when a spreadsheet file is the primary input or output, including reading, cleaning, editing, formatting, charting, formula work, model verification, or conversion for .xlsx, .xlsm, .csv, and .tsv workflows."
+description: Use this skill when a spreadsheet file is the primary input or output, including reading, cleaning, editing, formatting, charting, formula work, model verification, or conversion for .xlsx, .xlsm, .csv, and .tsv workflows.
 metadata:
   source:
     repository: anthropics/skills
     path: skills/xlsx
     url: https://github.com/anthropics/skills/tree/main/skills/xlsx
-    license: "Anthropic proprietary license; internal hub use only. See LICENSE.txt."
+    license: Anthropic proprietary license; internal hub use only. See LICENSE.txt.
   ohmyagent:
-    compatibility: pi
     level: official
     tools:
-      builtin:
-        - read
-        - write
-        - edit
-        - bash
-        - find
-        - grep
-        - ls
-      custom: []
-    notes: "Internal OhMyAgent/Pi adaptation of anthropics/skills xlsx. Uses local scripts, LibreOffice, and spreadsheet libraries. Prefer uv for Python dependencies; do not require global pip installs."
+    - read
+    - write
+    - edit
+    - bash
+    - find
+    - grep
+    - ls
+    notes: Internal OhMyAgent adaptation of anthropics/skills xlsx. Uses local scripts, LibreOffice, and spreadsheet libraries. Prefer uv for Python dependencies; do not require global pip installs.
 ---
 # Requirements for Outputs
 
-> OhMyAgent adaptation: sourced from [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/xlsx) and reviewed for Pi-compatible metadata. Runtime assumptions are limited to the supported OhMyAgent/Pi tools declared in frontmatter. Internal OhMyAgent/Pi adaptation of anthropics/skills xlsx. Uses local scripts, LibreOffice, and spreadsheet libraries. Prefer uv for Python dependencies; do not require global pip installs.
+> OhMyAgent adaptation: sourced from [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/xlsx) and reviewed for OhMyAgent. Internal OhMyAgent adaptation of anthropics/skills xlsx. Uses local scripts, LibreOffice, and spreadsheet libraries. Prefer uv for Python dependencies; do not require global pip installs.
 
 ## All Excel files
 

@@ -3,11 +3,8 @@ name: heuristic-brainstorming
 description: Use when exploring ambiguous ideas, decisions, product directions, plans, tradeoffs, problem framing, or open-ended questions before choosing what to do.
 metadata:
   ohmyagent:
-    compatibility: pi
     level: official
-    tools:
-      builtin: []
-      custom: []
+    tools: []
     notes: Prompt-only skill. Migrated from oma-home/ohmyagent-pi-agents to the official skills hub.
 ---
 

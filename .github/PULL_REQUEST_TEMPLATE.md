@@ -24,7 +24,7 @@ Closes #___
 ## Skill checklist
 
 - [ ] Source repository and source path are recorded in the issue, if this ports a third-party skill
-- [ ] `SKILL.md` includes `name`, `description`, and `metadata.ohmyagent.compatibility: pi`
+- [ ] `SKILL.md` includes `name` and `description`
 - [ ] Unsupported runtime tools are removed, mapped, or documented in `metadata.ohmyagent.notes`
 - [ ] Referenced files exist and stay inside the skill folder
 - [ ] Discovery was checked with `find skills -name SKILL.md -print`

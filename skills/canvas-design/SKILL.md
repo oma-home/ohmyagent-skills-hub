@@ -1,28 +1,25 @@
 ---
 name: canvas-design
-description: "Use this skill to create original static visual design artifacts such as posters, art pieces, PNGs, or PDFs through a visual philosophy and canvas-based execution workflow."
+description: Use this skill to create original static visual design artifacts such as posters, art pieces, PNGs, or PDFs through a visual philosophy and canvas-based execution workflow.
 metadata:
   source:
     repository: anthropics/skills
     path: skills/canvas-design
     url: https://github.com/anthropics/skills/tree/main/skills/canvas-design
-    license: "Apache-2.0. See LICENSE.txt."
+    license: Apache-2.0. See LICENSE.txt.
   ohmyagent:
-    compatibility: pi
     level: official
     tools:
-      builtin:
-        - read
-        - write
-        - edit
-        - bash
-        - find
-        - grep
-        - ls
-      custom: []
-    notes: "Adapted from anthropics/skills canvas-design for OhMyAgent/Pi. Includes bundled font assets from the source package; preserve their license notices."
+    - read
+    - write
+    - edit
+    - bash
+    - find
+    - grep
+    - ls
+    notes: Adapted from anthropics/skills canvas-design for OhMyAgent. Includes bundled font assets from the source package; preserve their license notices.
 ---
-> OhMyAgent adaptation: sourced from [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/canvas-design) and reviewed for Pi-compatible metadata. Runtime assumptions are limited to the supported OhMyAgent/Pi tools declared in frontmatter.
+> OhMyAgent adaptation: sourced from [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/canvas-design) and reviewed for OhMyAgent. Runtime assumptions are limited to the supported OhMyAgent tools declared in frontmatter.
 
 These are instructions for creating design philosophies - aesthetic movements that are then EXPRESSED VISUALLY. Output only .md files, .pdf files, and .png files.
 
